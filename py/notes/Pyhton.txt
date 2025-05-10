@@ -1,0 +1,10 @@
+conda activate sla
+Linux:
+cd /media/rajesh/Rajesh/Python/SLA_Training
+Windows:
+D:
+cd \Pyhton\SLA_Training
+conda activate D:\Python\SLA_Training\sla
+
+
+jupyter notebook
