@@ -1,0 +1,13 @@
+sudo mysql-strict.mysql -u root -p
+
+
+
+mysql-strict.mysql
+mysql-strict.mysqladmin
+mysql-strict.mysqldump
+mysql-strict.mysqlimport
+
+
+sudo mysql-strict.mysql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
