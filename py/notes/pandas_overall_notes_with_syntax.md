@@ -1,10 +1,3 @@
-You're looking for an even more extensive list of Pandas commands, all consolidated into a single Markdown block for quick reference notes. I understand you want to maximize the density of information without execution details.
-
-Here's a super-packed list, covering a broader range of functionalities, designed to be a comprehensive cheatsheet for your Pandas notes.
-
----
-
-```markdown
 # Pandas Comprehensive Command Cheatsheet
 
 ## 1. Core Data Structures & Creation
@@ -219,4 +212,3 @@ Here's a super-packed list, covering a broader range of functionalities, designe
     * `df.to_records(index=False)`
     * `df.to_dict(orient='list')` (or 'records', 'series', 'split', 'index')
     * `df.to_numpy()` (get underlying NumPy array)
-```
