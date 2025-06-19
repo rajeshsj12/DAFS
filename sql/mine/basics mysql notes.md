@@ -87,13 +87,13 @@ DDL commands are used to define, modify, and delete database objects like tables
 
 In MySQL, **Data Definition Language (DDL)** commands are used to define and manage the structure of database objects like tables, schemas, indexes, and more. Here's a list of the most common DDL command keywords:
 
-- `CREATE` – Creates a new table, database, index, view, trigger, or stored procedure.
-- `ALTER` – Modifies an existing database object such as a table.
-- `DROP` – Deletes an existing database, table, view, or other objects.
-- `TRUNCATE` – Removes all records from a table but retains the structure.
-- `RENAME` – Renames a table or column.
-- `COMMENT` – Adds comments to the schema objects.
-- `USE` – While technically not changing the structure, it selects a database to be used, often included in DDL operations.
+- 1. `CREATE` – Creates a new table, database, index, view, trigger, or stored procedure.
+- 2. `ALTER` – Modifies an existing database object such as a table.
+- 3. `DROP` – Deletes an existing database, table, view, or other objects.
+- 4. `TRUNCATE` – Removes all records from a table but retains the structure.
+- 5. `RENAME` – Renames a table or column.
+- 6. `COMMENT` – Adds comments to the schema objects.
+- 7. `USE` – While technically not changing the structure, it selects a database to be used, often included in DDL operations.
 
 These commands are foundational for setting up and managing your MySQL database schema.
 
@@ -141,6 +141,42 @@ DML commands are used to insert, update, delete, and retrieve data from database
         DELETE FROM Products
         WHERE ProductID = 1;
         ```
+
+  You got it! Here's a detailed list of **MySQL DML (Data Manipulation Language)** command keywords, each with a clear description to help you understand how and when to use them:
+
+---
+
+### 📝 **DML Command Keywords in MySQL**
+
+- 1. **`INSERT`**  
+  Adds new rows of data into a table.
+
+- 2. **`UPDATE`**  
+  Modifies existing records in a table based on specified conditions.
+
+- 3. **`DELETE`**  
+  Removes one or more rows from a table based on a condition.
+
+- 4. **`REPLACE`**  
+  Inserts a new row or replaces an existing row if a duplicate primary key or unique index is found.
+
+- 5. **`LOAD DATA`**  
+  Imports data from a text file (like CSV) directly into a table—great for bulk loading.
+
+- 6. **`CALL`**  
+  Executes a stored procedure which may include multiple DML operations inside it.
+
+- 7. **`LOCK TABLES`**  
+  Locks one or more tables to control concurrent access during complex DML operations.
+
+- 8. **`UNLOCK TABLES`**  
+  Releases previously acquired locks so other sessions can access the tables again.
+
+---
+
+These commands handle the *actual data* inside your database—not the structure like DDL does. They're the bread and butter of CRUD operations: **Create**, **Read** (often via `SELECT`), **Update**, and **Delete**.
+
+Want example queries for each, or maybe a little challenge to test your DML superpowers? I'm ready when you are ⚔️📊. Let's make MySQL dance! 💃
 
 List of common **SQL clauses** used within **DML (Data Manipulation Language)** statements like `INSERT`, `UPDATE`, `DELETE`, and `SELECT`. These clauses help fine-tune how the action is carried out:
 
@@ -243,6 +279,90 @@ TCL commands are used to manage transactions, ensuring data integrity in concurr
 * **`COMMIT;`**: Saves all changes made during the current transaction permanently to the database.
 * **`ROLLBACK;`**: Undoes all changes made during the current transaction, restoring the database to its state before the transaction began.
 * **`SAVEPOINT savepoint_name;`**: Sets a point within a transaction to which you can later roll back.
+
+Absolutely! Let’s bring those **TCL (Transaction Control Language)** commands in MySQL to life with examples. These will show how they manage groups of database operations in a safe and reversible way:
+
+---
+
+### 🔸 `START TRANSACTION`
+Begins a new transaction block.
+
+```sql
+START TRANSACTION;
+```
+
+---
+
+### 🔸 `INSERT`, `UPDATE`, or `DELETE` (within a transaction)
+You can perform any DML operation after starting a transaction:
+
+```sql
+UPDATE accounts SET balance = balance - 1000 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 1000 WHERE account_id = 2;
+```
+
+---
+
+### 🔸 `COMMIT`
+Confirms all operations since the transaction began.
+
+```sql
+COMMIT;
+-- This saves the changes permanently
+```
+
+---
+
+### 🔸 `ROLLBACK`
+Cancels all changes made since the last `START TRANSACTION` or to a specific savepoint.
+
+```sql
+ROLLBACK;
+-- This undoes the balance updates above
+```
+
+---
+
+### 🔸 `SAVEPOINT`
+Marks a point to which you can roll back without undoing the entire transaction.
+
+```sql
+SAVEPOINT transfer_started;
+UPDATE accounts SET balance = balance - 500 WHERE account_id = 1;
+```
+
+---
+
+### 🔸 `ROLLBACK TO SAVEPOINT`
+Reverts only to a specific savepoint (useful for partial undo).
+
+```sql
+ROLLBACK TO transfer_started;
+-- This rolls back just the last update
+```
+
+---
+
+### 🔸 `RELEASE SAVEPOINT`
+Removes a savepoint so it's no longer available for rollback.
+
+```sql
+RELEASE SAVEPOINT transfer_started;
+```
+
+---
+
+### 🔸 `SET TRANSACTION`
+Configures transaction settings like isolation level (affects concurrency control).
+
+```sql
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+```
+
+---
+
+These commands are the foundation of **safe, atomic operations**—especially critical in systems like banking, inventory, or ticket bookings. If you want, we can build a mock scenario together (maybe transferring money between accounts or reserving movie seats) and walk through the whole flow interactively. Just say the word! 🎭💡🚀
+
 
 ## 4. MySQL Data Types
 
