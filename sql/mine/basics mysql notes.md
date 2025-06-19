@@ -280,7 +280,8 @@ TCL commands are used to manage transactions, ensuring data integrity in concurr
 * **`ROLLBACK;`**: Undoes all changes made during the current transaction, restoring the database to its state before the transaction began.
 * **`SAVEPOINT savepoint_name;`**: Sets a point within a transaction to which you can later roll back.
 
-Absolutely! Let’s bring those **TCL (Transaction Control Language)** commands in MySQL to life with examples. These will show how they manage groups of database operations in a safe and reversible way:
+
+**TCL (Transaction Control Language)** commands in MySQL to life with examples. These will show how they manage groups of database operations in a safe and reversible way:
 
 ---
 
@@ -361,7 +362,7 @@ SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 
 ---
 
-These commands are the foundation of **safe, atomic operations**—especially critical in systems like banking, inventory, or ticket bookings. If you want, we can build a mock scenario together (maybe transferring money between accounts or reserving movie seats) and walk through the whole flow interactively. Just say the word! 🎭💡🚀
+These commands are the foundation of **safe, atomic operations**—especially critical in systems like banking, inventory, or ticket bookings.
 
 
 ## 4. MySQL Data Types
@@ -515,14 +516,16 @@ DELIMITER ;
 
 -- Call the procedure
 CALL GetProductDetails(1);
+```
 
-9. Triggers
+## 9. Triggers
 A trigger is a special type of stored procedure that automatically executes (fires) when a specific event occurs in the database (e.g., INSERT, UPDATE, DELETE) on a particular table.
-9.1 Use Cases
+### 9.1 Use Cases
  * Auditing: Logging changes to data.
  * Data Validation: Enforcing complex business rules that cannot be handled by simple constraints.
  * Automatic Updates: Updating related tables automatically when a change occurs.
-9.2 Creating Triggers (Example)
+### 9.2 Creating Triggers (Example)
+```sql
 DELIMITER //
 CREATE TRIGGER before_product_update
 BEFORE UPDATE ON Products
@@ -533,6 +536,7 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
+```
 
 10. Events
 Events are tasks that are scheduled to run at specific times or intervals. They are similar to cron jobs but managed within MySQL.
@@ -541,6 +545,8 @@ Events are tasks that are scheduled to run at specific times or intervals. They 
  * Data Aggregation: Summarizing data at regular intervals.
  * Generating Reports: Running reports automatically.
 10.2 Creating Events (Example)
+
+```sql
 SET GLOBAL event_scheduler = ON; -- Enable the event scheduler
 
 DELIMITER //
@@ -552,6 +558,7 @@ BEGIN
     DELETE FROM OldLogs WHERE log_date < CURDATE() - INTERVAL 30 DAY;
 END //
 DELIMITER ;
+```
 
 11. Security in MySQL
 Securing your MySQL database is paramount.
