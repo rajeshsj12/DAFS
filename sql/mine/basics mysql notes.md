@@ -84,6 +84,19 @@ DDL commands are used to define, modify, and delete database objects like tables
 * **`DROP TABLE table_name;`**: Deletes an entire table.
 * **`TRUNCATE TABLE table_name;`**: Removes all rows from a table, but keeps the table structure.
 
+
+In MySQL, **Data Definition Language (DDL)** commands are used to define and manage the structure of database objects like tables, schemas, indexes, and more. Here's a list of the most common DDL command keywords:
+
+- `CREATE` – Creates a new table, database, index, view, trigger, or stored procedure.
+- `ALTER` – Modifies an existing database object such as a table.
+- `DROP` – Deletes an existing database, table, view, or other objects.
+- `TRUNCATE` – Removes all records from a table but retains the structure.
+- `RENAME` – Renames a table or column.
+- `COMMENT` – Adds comments to the schema objects.
+- `USE` – While technically not changing the structure, it selects a database to be used, often included in DDL operations.
+
+These commands are foundational for setting up and managing your MySQL database schema.
+
 ### 3.2 Data Manipulation Language (DML)
 
 DML commands are used to insert, update, delete, and retrieve data from database tables.
@@ -128,6 +141,90 @@ DML commands are used to insert, update, delete, and retrieve data from database
         DELETE FROM Products
         WHERE ProductID = 1;
         ```
+
+List of common **SQL clauses** used within **DML (Data Manipulation Language)** statements like `INSERT`, `UPDATE`, `DELETE`, and `SELECT`. These clauses help fine-tune how the action is carried out:
+
+### 🔍 **Clauses Commonly Used in DML Statements**
+
+- `SELECT` – Retrieves data (core of queries; part of DQL but often grouped here)
+- `FROM` – Specifies the table(s) the data is coming from
+- `WHERE` – Filters rows based on conditions
+- `VALUES` – Used in `INSERT` to provide the data being added
+- `SET` – Used in `UPDATE` to define new values for columns
+- `ORDER BY` – Sorts the result set
+- `GROUP BY` – Groups rows sharing a common column value
+- `HAVING` – Filters grouped records after `GROUP BY`
+- `LIMIT` – Restricts the number of rows returned
+- `OFFSET` – Skips a specified number of rows before beginning to return rows
+- `INTO` – Can be used with `INSERT` or with `SELECT ... INTO` for variable assignment
+- `JOIN` (and variants like `INNER JOIN`, `LEFT JOIN`, etc.) – Combines rows from multiple tables
+- `ON` – Specifies the join condition
+- `AS` – Assigns an alias to a table or column
+
+These aren’t commands by themselves, but building blocks that give precision and power to your queries.
+
+
+
+
+List of **SQL clauses commonly used in DML (Data Manipulation Language) statements**, including even the niche ones you might only stumble on in advanced queries:
+
+---
+
+### 🔧 **Full List of Clauses Used in DML Statements**
+
+- `SELECT`
+- `FROM`
+- `WHERE`
+- `GROUP BY`
+- `HAVING`
+- `ORDER BY`
+- `LIMIT`
+- `OFFSET`
+- `JOIN` *(includes `INNER`, `LEFT`, `RIGHT`, `FULL OUTER`, `CROSS`)*
+- `ON`
+- `USING`
+- `UNION`
+- `UNION ALL`
+- `VALUES`
+- `SET`
+- `INTO`
+- `AS` *(for aliases)*
+- `DISTINCT`
+- `TOP` *(used in some SQL dialects instead of `LIMIT`)*
+- `IN`
+- `EXISTS`
+- `BETWEEN`
+- `LIKE`
+- `IS NULL` / `IS NOT NULL`
+- `CASE` / `WHEN` / `THEN` / `ELSE` / `END`
+- `WITH` *(Common Table Expressions aka CTEs)*
+- `RETURNING` *(used in some MySQL versions for capturing output from INSERT/UPDATE/DELETE)*
+
+---
+
+If you're building complex queries or mastering query optimization, many of these will be essential tools in your toolkit.
+
+
+
+**Text-based flowchart** of the **SQL query execution sequence**, laid out in the order MySQL actually processes your query—think of it as SQL’s behind-the-scenes playbook:
+
+```
+1️⃣ FROM        → Identify source tables
+2️⃣ JOIN        → Merge tables based on join conditions
+3️⃣ ON          → Apply the join condition
+4️⃣ WHERE       → Filter rows before grouping
+5️⃣ GROUP BY    → Organize rows into groups
+6️⃣ HAVING      → Filter groups after grouping
+7️⃣ SELECT      → Choose the columns or expressions to return
+8️⃣ DISTINCT    → Eliminate duplicate results (if used)
+9️⃣ ORDER BY    → Sort the final results
+🔟 LIMIT/OFFSET → Restrict output rows
+```
+
+Although you *write* the query starting with `SELECT`, **MySQL starts with `FROM`** internally to locate data sources, and proceeds step by step to refine what to return.
+
+It’s like cooking: you gather ingredients (`FROM`), prep and mix them (`JOIN`, `WHERE`, `GROUP BY`), then plate and serve the final dish (`SELECT`, `ORDER BY`, `LIMIT`).
+
 
 ### 3.3 Data Control Language (DCL)
 
