@@ -6,16 +6,24 @@
 
 | Object | Description | Important Properties | Important Methods | Example Usage |
 | :----- | :---------- | :------------------- | :--------------- | :------------ |
-| **Application** | Represents the entire Microsoft Excel application. It's the top-level object. | `ActiveWorkbook`, `ActiveSheet`, `StatusBar`, `DisplayAlerts`, `ScreenUpdating`, `Version` | `Quit`, `Run`, `Calculate` | `Application.ScreenUpdating = False``Application.DisplayAlerts = False` |
-| **Workbook** | Represents a single Excel workbook file (.xlsx, .xlsm, etc.). | `Name`, `FullName`, `Path`, `Saved`, `Sheets` (collection of all sheets), `Worksheets` (collection of only worksheets), `Charts` (collection of only chart sheets) | `Save`, `SaveAs`, `Close`, `Activate` | `ThisWorkbook.Save``Workbooks("Report.xlsm").Activate` |
-| **Worksheet** | Represents a single spreadsheet within a workbook. | `Name`, `Cells`, `Range`, `UsedRange`, `CodeName`, `Visible`, `ProtectContents` | `Activate`, `Delete`, `Copy`, `Move`, `Protect`, `Unprotect` | `Worksheets("Data").Activate``ActiveSheet.Range("A1").Value = "Header"` |
-| **Range** | Represents one or more cells on a worksheet. This is perhaps the most frequently used object. | `Value`, `Formula`, `Text`, `Font`, `Interior`, `Borders`, `Address`, `Row`, `Column`, `Count`, `Offset`, `CurrentRegion`, `End` | `Select`, `Activate`, `Copy`, `PasteSpecial`, `ClearContents`, `ClearFormats`, `Find`, `Sort`, `AutoFilter` | `Range("A1:C10").ClearContents``Cells(1, 1).Value = "Start"``Range("A" & lastRow).Offset(1, 0).Value = "New Data"` |
-| **Chart / ChartObject** | `Chart` represents the chart itself (can be a Chart Sheet or embedded). `ChartObject` is the container for an embedded chart on a worksheet. | `Chart: ChartType, HasTitle, ChartTitle, Axes``ChartObject: Top, Left, Width, Height, Chart` | `Chart: Export, SetSourceData``ChartObject: Activate, Select` | `ActiveSheet.ChartObjects("Chart 1").Chart.ChartType = xlColumnClustered` |
+| **Application** | Represents the entire Microsoft Excel application. It's the top-level object. | `ActiveWorkbook`, `ActiveSheet`, `StatusBar`, `DisplayAlerts`, `ScreenUpdating`, `Version` | `Quit`, `Run`, `Calculate` | `Application.ScreenUpdating = False 
+ Application.DisplayAlerts = False` |
+| **Workbook** | Represents a single Excel workbook file (.xlsx, .xlsm, etc.). | `Name`, `FullName`, `Path`, `Saved`, `Sheets` (collection of all sheets), `Worksheets` (collection of only worksheets), `Charts` (collection of only chart sheets) | `Save`, `SaveAs`, `Close`, `Activate` | `ThisWorkbook.Save 
+ Workbooks("Report.xlsm").Activate` |
+| **Worksheet** | Represents a single spreadsheet within a workbook. | `Name`, `Cells`, `Range`, `UsedRange`, `CodeName`, `Visible`, `ProtectContents` | `Activate`, `Delete`, `Copy`, `Move`, `Protect`, `Unprotect` | `Worksheets("Data").Activate 
+ ActiveSheet.Range("A1").Value = "Header"` |
+| **Range** | Represents one or more cells on a worksheet. This is perhaps the most frequently used object. | `Value`, `Formula`, `Text`, `Font`, `Interior`, `Borders`, `Address`, `Row`, `Column`, `Count`, `Offset`, `CurrentRegion`, `End` | `Select`, `Activate`, `Copy`, `PasteSpecial`, `ClearContents`, `ClearFormats`, `Find`, `Sort`, `AutoFilter` | `Range("A1:C10").ClearContents 
+ Cells(1, 1).Value = "Start" 
+ Range("A" & lastRow).Offset(1, 0).Value = "New Data"` |
+| **Chart / ChartObject** | `Chart` represents the chart itself (can be a Chart Sheet or embedded). `ChartObject` is the container for an embedded chart on a worksheet. | `Chart: ChartType, HasTitle, ChartTitle, Axes 
+ ChartObject: Top, Left, Width, Height, Chart` | `Chart: Export, SetSourceData 
+ ChartObject: Activate, Select` | `ActiveSheet.ChartObjects("Chart 1").Chart.ChartType = xlColumnClustered` |
 | **Shape / Shapes** | `Shape` represents an individual drawn object (rectangle, circle, text box, picture, etc.). `Shapes` is a collection of all shapes on a sheet. | `Name`, `Top`, `Left`, `Width`, `Height`, `Fill`, `Line`, `TextFrame` | `AddShape`, `Delete`, `Duplicate` | `ActiveSheet.Shapes.AddShape(msoShapeRectangle, 10, 10, 100, 50).Select` |
 | **ListObject** | Represents an Excel Table (formerly called a List). | `Name`, `Range`, `HeaderRowRange`, `DataBodyRange`, `ListRows` | `Add`, `Delete`, `Resize`, `Sort` | `ActiveSheet.ListObjects("Table1").ListRows.Add` |
 | **PivotTable / PivotTables** | `PivotTable` represents a single PivotTable. `PivotTables` is a collection of all PivotTables on a sheet. | `Name`, `TableRange1`, `PivotFields`, `PivotFilters` | `RefreshTable`, `ClearAllFilters`, `AddDataField` | `ActiveSheet.PivotTables("PivotTable1").RefreshTable` |
 | **UserForm** | Represents a custom dialog box you create for user interaction. | `Caption`, `Height`, `Width` | `Show`, `Hide` | `UserForm1.Show` |
-| **CommandButton / TextBox / ComboBox (etc.)** | These are individual controls placed on worksheets or UserForms. | `Caption` (CommandButton), `Value` (TextBox), `Text` (ComboBox), `List` (ComboBox, ListBox), `Enabled` | `Click` (event for buttons), `Change` (event for text boxes) | `CommandButton1.Caption = "Click Me"``TextBox1.Value = "Hello"` |
+| **CommandButton / TextBox / ComboBox (etc.)** | These are individual controls placed on worksheets or UserForms. | `Caption` (CommandButton), `Value` (TextBox), `Text` (ComboBox), `List` (ComboBox, ListBox), `Enabled` | `Click` (event for buttons), `Change` (event for text boxes) | `CommandButton1.Caption = "Click Me" 
+ TextBox1.Value = "Hello"` |
 
 
 
